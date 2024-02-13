@@ -14,20 +14,20 @@
  * }
  */
 func preorderTraversal(root *TreeNode) []int {
-	res :=make([]int,0)
-	if root == nil{
+	res := make([]int, 0)
+	if root == nil {
 		return res
 	}
 
 	stack := list.New()
-	stack.PushBack(root);
-	for stack.Len() >0{
+	stack.PushBack(root)
+	for stack.Len() > 0 {
 		node := stack.Remove(stack.Back()).(*TreeNode)
-		res = append(res,node.Val)
-		if node.Right!=nil{
+		res = append(res, node.Val)
+		if node.Right != nil {
 			stack.PushBack(node.Right)
 		}
-		if node.Left!=nil{
+		if node.Left != nil {
 			stack.PushBack(node.Left)
 		}
 
@@ -35,13 +35,12 @@ func preorderTraversal(root *TreeNode) []int {
 	return res
 }
 
+func preorderRecursiveWay(root *TreeNode) []int {
+	res := make([]int, 0)
 
-func preorderRecursiveWay(root *TreeNode)[]int{
-	res := make([]int,0)
-
-	var traversal func (node *TreeNode)
-	traversal = func (node *TreeNode){
-		if node == nil{
+	var traversal func(node *TreeNode)
+	traversal = func(node *TreeNode) {
+		if node == nil {
 			return
 		}
 		res = append(res, node.Val)
@@ -51,5 +50,6 @@ func preorderRecursiveWay(root *TreeNode)[]int{
 	traversal(root)
 	return res
 }
+
 // @lc code=end
 
