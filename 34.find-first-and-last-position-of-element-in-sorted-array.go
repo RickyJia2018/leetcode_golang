@@ -10,42 +10,53 @@ func searchRange(nums []int, target int) []int {
 	right:=findRight(nums, target)
 	return []int{left,right}
 }
-func findLeft(nums []int,target int) int {
-	if len(nums) == 0 { return -1 }
-	left ,right := 0, len(nums)
-	res := -1
 
-	for left<right {
-		mid := left + (right-left)/2
-		if nums[mid] > target {
-			right = mid
-		}else if nums[mid] < target{
-			left = mid + 1
-		}else{
-			right = mid
-			res = mid
-		}
-
+func findLeft(nums []int, target int) int{
+	if len(nums)<1{
+		return -1
 	}
-
+	left:=0
+	right:=len(nums)
+	res:=-1
+	
+	for left<right{
+		mid:=left + (right-left)/2
+		if nums[mid]<target{
+			left = mid + 1
+		}else if nums[mid]>target{
+			right = mid
+		}else{
+			//update res
+			res = mid
+			//keep moving
+			right = mid 
+		}
+	}
 	return res
 }
+
+
 func findRight(nums []int,target int) int {
-	if len(nums) == 0 { return -1 }
-	left ,right := 0, len(nums)
-	res := -1
-	for left<right {
-		mid := left + (right-left)/2
-		if nums[mid] > target {
+	if len(nums)<1{
+		return -1
+	}
+	left:=0
+	right:=len(nums)
+	res:=-1
+	for left<right{
+		mid:=left+(right-left)/2
+		if nums[mid]>target{
 			right = mid
-		}else if nums[mid] < target{
+		}else if nums[mid]<target{
 			left = mid + 1
 		}else{
-			left = mid + 1
 			res = mid
+			left = mid + 1
 		}
 	}
 	return res
-}
+ }
+
+
 // @lc code=end
 
