@@ -14,6 +14,8 @@
  */
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
     
+
+	return dumHead.Next
 }
 // @lc code=end
 
